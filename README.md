@@ -40,8 +40,8 @@
 
 ## ER Diagram
 ***
-![ER DIAGRAM](https://drive.google.com/file/d/1Pxcz_w2g7qj21F8KA89RtQZbFB7OtDLb/view?usp=sharing "ER Diagram")
+![ER DIAGRAM](/er-diagram.jpg "ER Diagram")
 
 ## Screen Transition Diagram
 ***
-![Screen Tansition diagram](https://drive.google.com/file/d/1cDvsy2Hc_pCIlnpvn3RJa6UbhL2sxPEU/view?usp=sharing "Screen Tansition diagram")
+![Screen Tansition diagram](/screen-tansition.jpg "Screen Tansition diagram")
