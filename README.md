@@ -44,4 +44,4 @@
 
 ## Screen Transition Diagram
 ***
-![Screen Tansition diagram](/screen-tansition.jpg "Screen Tansition diagram")
+![Screen Tansition diagram](/screen-transition.jpg "Screen Tansition diagram")
