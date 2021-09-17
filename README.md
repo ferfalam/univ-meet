@@ -18,13 +18,13 @@
 
 ## Execution procedure
 ***
-> git clone https://github.com/ferfalam/univ-meet
-> cd univ-meet
-> bundle install
-> rails db:create
-> rails db:migrate
-> rails db:seed
-> rails s
+> $ git clone https://github.com/ferfalam/univ-meet  
+> $ cd univ-meet  
+> $ bundle install  
+> $ rails db:create  
+> $ rails db:migrate  
+> $ rails db:seed  
+> $ rails s  
 
 ## Catalog Design 
 ***
@@ -36,7 +36,7 @@
 
 ## Wireframe
 ***
-<https://drive.google.com/file/d/12VKozlJOtDr0WB4tIf3CjkGdJmGkF_8x/view?usp=sharing>
+<https://drive.google.com/file/d/1Aq1Qt6yyGIhtJfqpwcYpSyjd3Z4ShW_w/view?usp=sharing>
 
 ## ER Diagram
 ***
