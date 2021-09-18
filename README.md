@@ -8,13 +8,14 @@
 
 ## Employment term technology
 ***
-- devise
-- message function
-- favorite function
+- devise for students and univerties
+- message function to implement chat between students
+- favorite function to add post to favorite
 
 ## Technology outside the curriculum
 ***
-- Vue.js
+- Vue Router
+
 
 ## Execution procedure
 ***
