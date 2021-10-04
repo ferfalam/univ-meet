@@ -7,6 +7,7 @@ Bundler.require(*Rails.groups)
 module Univmeet
   class Application < Rails::Application
     config.load_defaults 5.2
+    config.action_mailer.default_url_options = {host:'localhost', port: 1025}
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
