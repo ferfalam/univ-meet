@@ -1,5 +1,9 @@
 {
   "name": "univmeet",
+  "author": {
+    "name": "AMOUSSA Farid",
+    "email": "amoussa.farid2@gmail.com"
+  },
   "private": true,
   "dependencies": {}
 }

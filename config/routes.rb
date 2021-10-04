@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :messages
   resources :posts
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   resources :requests
   resources :fields
