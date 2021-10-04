@@ -1,1 +1,1 @@
-json.partial! "fields/field", field: @field
+json.array! @field

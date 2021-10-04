@@ -1,1 +1,1 @@
-json.partial! "universities/university", university: @university
+json.array! @university

@@ -1,1 +1,1 @@
-json.array! @fields, partial: "fields/field", as: :field
+json.array! @fields
