@@ -5,5 +5,20 @@
     "email": "amoussa.farid2@gmail.com"
   },
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "4.3.0",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
+    "axios": "^0.22.0",
+    "jquery": "^3.6.0",
+    "vue": "^2.6.14",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
+    "vue-turbolinks": "^2.2.2",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@webpack-cli/serve": "^1.5.2",
+    "webpack-dev-server": "^2.11.1"
+  }
 }

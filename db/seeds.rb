@@ -1,7 +1,7 @@
 ##University Seed
 University.create(
     {
-        email: Faker::Internet.unique.email,
+        email: 'admin@univmeet.com',
         password: "password",
         admin: true
     }

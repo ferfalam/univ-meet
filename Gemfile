@@ -13,8 +13,16 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+gem "font-awesome-rails"
+gem 'foreman'
+
 gem 'rexml'
 gem 'devise'
+
+gem 'webpacker', '~> 4.x'
+gem 'i18n-js'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

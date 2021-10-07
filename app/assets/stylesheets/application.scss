@@ -1,0 +1,20 @@
+$primary: #5fc563 ;
+
+@import "bootstrap";
+
+.brand{
+    background-image: url('/images/brand.jpg');
+}
+
+.brand-student{
+    background-image: url('/images/brand-student.jpg');
+}
+
+.icon{
+    filter: drop-shadow(7px 3px 5px #000);
+    width: 25%;
+}
+
+.icon:hover{
+        transform: rotate3d(1, 1, 1, 45deg);
+}

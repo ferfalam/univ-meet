@@ -9,9 +9,18 @@ class Universities::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @university = University.find_by(email: params[:session][:email])
+    if @university.present?
+      if @university.valid_password?(params[:session][:password])
+        sign_in @university
+        render json: {
+          status: 200,
+          url: '/'
+        }
+      end
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -22,6 +31,6 @@ class Universities::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  #   params.require(:session).permit(:email, :password)
   # end
 end
