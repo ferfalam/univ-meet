@@ -1,0 +1,2 @@
+module Universities::StudentsHelper
+end

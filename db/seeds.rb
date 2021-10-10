@@ -3,6 +3,7 @@ University.create(
     {
         email: 'admin@univmeet.com',
         password: "password",
+        valid_account: true,
         admin: true
     }
 )
@@ -14,6 +15,7 @@ University.create(
             acronym: Faker::University.unique.greek_organization,
             phone_number: Faker::PhoneNumber.unique.phone_number,
             email: Faker::Internet.unique.email,
+            valid_account: Faker::Boolean.boolean, 
             password: "password",
         }
     )
@@ -57,7 +59,8 @@ end
             personal_number: Faker::PhoneNumber.unique.phone_number,
             email: Faker::Internet.unique.email,
             password: "password",
-            card_image: Faker::Avatar.image, 
+            card_image: Faker::Avatar.image,
+            valid_account: Faker::Boolean.boolean, 
             valid_until: Faker::Date.between_except(from: Date.today, to:1.year.from_now, excepted: Date.today),
             university_id: Random.rand(2..15),
             field_id: Random.rand(1..20),

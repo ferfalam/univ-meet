@@ -9,7 +9,10 @@ class DeviseCreateStudents < ActiveRecord::Migration[5.2]
       t.string :phone_number, null: false
       t.string :personal_number, null: false
       t.string :card_image, null: false
-      t.datetime :valid_until, null: false
+
+      ## Valid or not
+      t.boolean :valid_account,              null: false, default: false
+      t.datetime :valid_until,       null: false
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

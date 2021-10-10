@@ -3,5 +3,5 @@ class Field < ApplicationRecord
   validates :acronym, presence: true, uniqueness: true
 
   belongs_to :university
-  has_many :students
+  has_many :students, dependent: :destroy
 end

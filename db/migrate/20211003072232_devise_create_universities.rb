@@ -10,6 +10,9 @@ class DeviseCreateUniversities < ActiveRecord::Migration[5.2]
 
       ## Admin or not 
       t.boolean :admin,              null: false, default: false
+
+      ## Valid or not
+      t.boolean :valid_account,              null: false, default: false
       
 
       ## Database authenticatable

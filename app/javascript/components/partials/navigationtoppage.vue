@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
             <div v-for="navbar_link in navbar_links" :key="navbar_link.text">
                 <li class="nav-item" :class="active_link(navbar_link)" v-if="navbar_link.children_links == 0">
                     <a class="nav-link" :href="navbar_link.path">{{navbar_link.text}}</a>
@@ -21,8 +21,12 @@
             </div>
         </ul>
         <form class="d-flex">
-            <a href="/admins/universities" class="btn btn-outline-info mx-2" v-if="user.admin">Administration</a>
-            <a rel="nofollow" data-method="delete" href="/universities/sign_out" class="btn btn-outline-danger">Déconnexion</a>
+            <button type="button" class="btn btn-outline-primary mx-2" data-toggle="modal" data-target="#loginmodal">
+                Se connecter
+            </button>
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#registermodal">
+                S'inscrire
+            </button>
         </form>
     </div>
     </nav>
@@ -30,10 +34,6 @@
 
 <script>
 export default {
-    props: {
-        user: Object
-    },
-
     mounted() {
         // console.log(this.navbar_links)
     },
@@ -49,31 +49,6 @@ export default {
     data() {
         return {
             navbar_links: [
-                {
-                    text: "Tableau de bord",
-                    path: "/universities/landing",
-                    children_links: []
-                },
-                {
-                    text: "Filières",
-                    path: "/universities/fields",
-                    children_links: []
-                },
-                {
-                    text: "Request",
-                    path: "/universities/requests",
-                    children_links: []
-                },
-                {
-                    text: "Students",
-                    path: "/universities/students",
-                    children_links: []
-                },
-                {
-                    text: this.user.name ? this.user.name : this.user.email,
-                    path: "/universities/edit",
-                    children_links: []
-                }
             ]
 
         }

@@ -17,7 +17,7 @@
     name: "IndexUniversity",
 
     mounted() {
-      console.log(this.user)
+      // console.log(this.user)
     },
     
     props: {
@@ -37,29 +37,36 @@
           {
             name: "Filière(s)",
             color: "bg-success",
-            url: "#" ,
-            count: this.data_dashboard.fields.length ,
+            url: "/universities/fields",
+            count: this.data_dashboard.fields ? this.data_dashboard.fields.length : 0,
           },
           {
             name: "Demande(s)",
             color: "bg-warning",
-            url: "#" ,
-            count: this.data_dashboard.requests.length ,
+            url: "/universities/requests" ,
+            count: this.data_dashboard.requests ? this.data_dashboard.requests.length : 0,
           },
           {
             name: "Etudiants valide",
             color: "bg-info",
-            url: "#" ,
-            count: this.data_dashboard.students.filter((value) => (value.valid_until.length != 0)).length ,
+            url: "/universities/students" ,
+            count: this.data_dashboard.students ? this.data_dashboard.students.filter((value) => (value.valid_account == true)).length : 0,
           },
           {
             name: "Etudiants Non valide",
             color: "bg-danger",
-            url: "#" ,
-            count: this.data_dashboard.students.filter((value) => (value.valid_until.length == 0)).length ,
+            url: "/universities/students" ,
+            count: this.data_dashboard.students ? this.data_dashboard.students.filter((value) => (value.valid_account == false)).length : 0,
           }
         ]
       }
     }
   }
 </script>
+
+<style scoped>
+footer{
+  position: absolute;
+  bottom: 0
+}
+</style>

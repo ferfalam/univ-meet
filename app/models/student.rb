@@ -10,10 +10,11 @@ class Student < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :card_image, presence: true, uniqueness: true
 
-  has_many :posts, dependent: :destroy
-  has_many :messages, dependent: :destroy
+  has_many :posts, dependent: :nullify
+  has_many :messages, dependent: :nullify
+  has_many :conversations, dependent: :nullify
   has_many :favorites, dependent: :destroy
-  has_many :group_students_maps
+  has_many :group_students_maps, dependent: :destroy
   belongs_to :field
   belongs_to :university
 end

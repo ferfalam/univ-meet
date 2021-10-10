@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2021_10_04_002251) do
     t.string "phone_number", null: false
     t.string "personal_number", null: false
     t.string "card_image", null: false
+    t.boolean "valid_account", default: false, null: false
     t.datetime "valid_until", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 2021_10_04_002251) do
     t.string "acronym"
     t.string "phone_number"
     t.boolean "admin", default: false, null: false
+    t.boolean "valid_account", default: false, null: false
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "reset_password_token"

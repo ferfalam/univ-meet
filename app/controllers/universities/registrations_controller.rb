@@ -34,7 +34,17 @@ class Universities::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    super
+    if params[:registration][:password]
+      if current_university.valid_password?(params[:registration][:last_password])
+        underUpdate
+      else
+        render json: {
+          last_password_error: "Mot de passe incorrect"
+        }
+      end
+    else
+      underUpdate
+    end
   end
 
   # DELETE /resource
@@ -72,4 +82,19 @@ class Universities::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def underUpdate
+    if current_university.update(configure_sign_up_params)
+      render json: {
+        status: 200,
+        user: current_university,
+        message: "Vos informations ont été mis à jour"
+      }
+    else
+      render json: {
+        errors: current_university.errors.messages
+      }
+    end
+  end
+  
 end

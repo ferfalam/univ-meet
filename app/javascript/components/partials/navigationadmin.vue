@@ -21,7 +21,6 @@
             </div>
         </ul>
         <form class="d-flex">
-            <a href="/admins/universities" class="btn btn-outline-info mx-2" v-if="user.admin">Administration</a>
             <a rel="nofollow" data-method="delete" href="/universities/sign_out" class="btn btn-outline-danger">Déconnexion</a>
         </form>
     </div>
@@ -51,27 +50,12 @@ export default {
             navbar_links: [
                 {
                     text: "Tableau de bord",
-                    path: "/universities/landing",
+                    path: "/",
                     children_links: []
                 },
                 {
-                    text: "Filières",
-                    path: "/universities/fields",
-                    children_links: []
-                },
-                {
-                    text: "Request",
-                    path: "/universities/requests",
-                    children_links: []
-                },
-                {
-                    text: "Students",
-                    path: "/universities/students",
-                    children_links: []
-                },
-                {
-                    text: this.user.name ? this.user.name : this.user.email,
-                    path: "/universities/edit",
+                    text: "Universités",
+                    path: "/admins/universities",
                     children_links: []
                 }
             ]
