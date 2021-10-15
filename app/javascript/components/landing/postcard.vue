@@ -7,7 +7,9 @@
             </div>
             <div class="card-body">
                 <div class="card-text">
-                    {{post.content}}
+                    {{getContent()}}
+                    <a :href="url" v-if="sub">...Voir plus</a> 
+                    <a :href="url" v-else>Voir la publication</a> 
                     <div class="d-flex justify-content-center my-2" v-if="post.image">
                         <img :src="post.image" v-if="post.image" alt="Image Post">
                     </div>
@@ -20,7 +22,7 @@
                         </div>
                         <div class="col col-9">
                             <textarea v-model="commentaire" class="form-control"></textarea>
-                            <button v-on:click="comment" class="btn btn-success mx-2">Commenter</button> 
+                            <button v-on:click="comment" class="btn btn-success my-2">Commenter</button> 
                         </div>
                     </div>
                 </div>
@@ -51,14 +53,38 @@ export default {
                 content: null,
                 image: null,
             },
-
-            commentaire: null
+            sub:false,
+            commentaire: null,
+            url: '/students/posts/'+this.elmt.post.id
         }
     },
 
     methods:{
         comment: function () {
-            console.log("Comment")
+            let _this=this
+            axios.post('/students/comments',{context: this.commentaire, post_id: this.post.id, student_id: this.user.id})
+            .then(function (response) {
+                if (response.data.status == 200) {
+                    _this.errors = {
+                        content: null
+                    }
+                    _this.toast = response.data.toast
+                    $('.toast').toast('show');
+                    _this.commentaire = null
+                }else{
+                    _this.errors = response.data.errors
+                }
+            })
+        },
+
+        getContent: function () {
+            if (this.post.length > 300) {
+                this.sub = true
+                return this.post.content.substring(0, 300)
+            } else {
+                this.sub = false
+                return this.post.content
+            }
         },
 
         favorite_m: function () {

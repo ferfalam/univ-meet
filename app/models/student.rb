@@ -15,6 +15,7 @@ class Student < ApplicationRecord
   has_many :conversations, dependent: :nullify
   has_many :favorites, dependent: :destroy
   has_many :group_students_maps, dependent: :destroy
+  has_many :comments, dependent: :destroy
   belongs_to :field
   belongs_to :university
 end

@@ -1,0 +1,5 @@
+<% props={post: @post, owner: @post.student, comments: @post.comments.order(created_at: :desc), students: @students, user: current_student}.to_json %>
+
+<div class="vue-show" data-props="<%= props %> ">
+
+</div>

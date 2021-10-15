@@ -1,7 +1,7 @@
 class Students::PostsController < ApplicationController
   before_action :authenticate_student!
   before_action :valid_account
-  before_action :set_post, only: [:update, :destroy]
+  before_action :set_post, only: [:show, :update, :destroy]
   def index
     @posts = current_student.posts.order(created_at: :desc)
   end
@@ -24,8 +24,11 @@ class Students::PostsController < ApplicationController
           } 
       end
   end
-    
 
+  def show
+    @students= Student.all
+  end
+  
   def update
     if @post.update(post_params)
         render json: {

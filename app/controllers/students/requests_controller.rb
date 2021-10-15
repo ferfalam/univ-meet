@@ -9,8 +9,8 @@ class Students::RequestsController < ApplicationController
             render json: {
                 status: 200,
                 request: @request,
-                toast: {header: 'Création Filière',
-                    body: "Filière créée avec succès",
+                toast: {header: 'Création Demande',
+                    body: "Demande créée avec succès",
                     color: "bg-success"}
             } 
         else

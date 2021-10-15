@@ -16,6 +16,7 @@ import StudentEdit from './components/students/registrations/edit.vue'
 import PasswordResetStudent from './components/students/passwords/new.vue'
 import MessageIndex from './components/students/messages/index.vue'
 import PostsIndex from './components/students/posts/index.vue'
+import ShowIndex from './components/students/posts/show.vue'
 import NewRequest from './components/students/requests/new.vue'
 
 // TopPage
@@ -105,6 +106,11 @@ export const MessageIndexInstance = {
 export const PostsIndexInstance = {
     el: '.vue-posts',
     component: PostsIndex
+}
+
+export const ShowIndexInstance = {
+    el: '.vue-show',
+    component: ShowIndex    
 }
 
 export const NewRequestInstance = {
