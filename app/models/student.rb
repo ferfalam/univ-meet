@@ -6,7 +6,8 @@ class Student < ApplicationRecord
 
   validates :firstname, presence: true
   validates :lastname, presence: true
-  validates :phone_number, uniqueness: true
+  validates :phone_number, presence: true, uniqueness: true
+  validates :personal_number, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :card_image, presence: true, uniqueness: true
 

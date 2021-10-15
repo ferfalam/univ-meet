@@ -1,6 +1,75 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
-
 fr:
+  activerecord: 
+    errors:
+      models:
+        student:
+          attributes:
+            email:
+              blank: "L'email ne peut pas être vide"
+              invalid: "Entrer un email valide" 
+              taken: "Email déjà utilisé"
+            password:
+              blank: "Mot de passe ne peut pas être vide"
+              too_short: "Au moins 6 caractères"
+            password_confirmation:
+              confirmation: "Mot de passe non identique"
+            firstname:
+              blank: "Prénom ne peut pas être vide"
+            lastname:
+              blank: "Nom ne peut pas être vide"
+            phone_number:
+              blank: "Entrez numéro de téléphone"
+              taken: "Numéro de téléphone déjà utilisé"
+            personal_number:
+              blank: "Entrez numéro matricule"
+              taken: "Numéro matricule déjà utilisé"
+            card_image:
+              blank: "Insérer votre carte d'étudiant"
+            field:
+              required: "Sélectionner votre filière"
+            university:
+              required: "Sélectionner votre Université"
+        university:
+          attributes:
+            email:
+              blank: "L'email ne peut pas être vide"
+              invalid: "Entrer un email valide"
+              taken: "Email déjà utilisé"
+            password:
+              blank: "Mot de passe ne peut pas être vide"
+              too_short: "Au moins 6 caractères"
+            password_confirmation:
+              confirmation: "Mot de passe non identique"
+            name:
+              taken: "Nom déjà utilisé"
+              blank: "Nom ne peut pas être vide"
+            phone_number:
+              blank: "Entrez numéro de téléphone"
+              taken: "Numéro de téléphone déjà utilisé"
+            acronym:
+              taken: "Sigle déjà utilisé"
+              blank: "Sigle ne peut pas être vide"
+        field:
+          attributes: 
+            name:
+              taken: "Nom déjà utilisé"
+              blank: "Nom ne peut pas être vide"
+            acronym:
+              taken: "Sigle déjà utilisé"
+              blank: "Sigle ne peut pas être vide"
+        request:
+          attributes: 
+            title:
+              blank: "Titre ne peut pas être vide"
+        post:
+          attributes: 
+            content:
+              blank: "Contenue ne peut pas être vide"
+        comment:
+          attributes: 
+            context:
+              blank: "Contenue ne peut pas être vide"
   devise:
     confirmations:
       confirmed: "Votre compte a été validé."
