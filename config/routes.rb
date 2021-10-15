@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  namespace :students do
+    get 'requests/create'
+  end
   root to: 'top#index'
-  resources :messages
-  resources :posts
-  resources :requests
   
   namespace :admins do
     resources :universities, only: [:index, :destroy]
@@ -17,8 +17,17 @@ Rails.application.routes.draw do
     post "/students/valid", to: "students#valid"
     post "/students/unvalid", to: "students#unvalid"
     post "/students/destroymail", to: "students#destroymail"
-    resources :fields, only: [:index, :create, :destory]
-    resources :requests, only: [:index, :destory]
+    resources :fields, only: [:index, :create, :destroy]
+    resources :requests, only: [:index, :destroy]
+  end
+  
+  get '/students/landing/', to: "landing#indexstudent"
+  namespace :students do
+    post "/posts/favorite/:id", to: "posts#favorite"
+    post "/posts/unfavorite/:id", to: "posts#unfavorite"
+    resources :messages, only: [:index]
+    resources :requests, only: [:new, :create]
+    resources :posts, only: [:index, :create, :update, :destroy]
   end
   
   devise_for :students, controllers: {

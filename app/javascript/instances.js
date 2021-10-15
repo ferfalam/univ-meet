@@ -9,9 +9,14 @@ import UniversityLogIn from './components/universities/sessions/new.vue'
 import UniversitySignUp from './components/universities/registrations/new.vue'
 import UniversityEdit from './components/universities/registrations/edit.vue'
 import PasswordReset from './components/universities/passwords/new.vue'
+import IndexStudent from './components/landing/indexstudent.vue'
 import StudentLogIn from './components/students/sessions/new.vue'
 import StudentSignUp from './components/students/registrations/new.vue'
+import StudentEdit from './components/students/registrations/edit.vue'
 import PasswordResetStudent from './components/students/passwords/new.vue'
+import MessageIndex from './components/students/messages/index.vue'
+import PostsIndex from './components/students/posts/index.vue'
+import NewRequest from './components/students/requests/new.vue'
 
 // TopPage
 export const TopPageInstance = {
@@ -80,4 +85,29 @@ export const StudentSignUpInstance = {
 export const PasswordResetStudentInstance = {
     el: '.vue-password-reset-student',
     component: PasswordResetStudent
+}
+
+export const IndexStudentInstance = {
+    el: '.landing-student',
+    component: IndexStudent
+}
+
+export const StudentEditInstance = {
+    el: '.vue-student-edit',
+    component: StudentEdit
+}
+
+export const MessageIndexInstance = {
+    el: '.vue-message',
+    component: MessageIndex
+}
+
+export const PostsIndexInstance = {
+    el: '.vue-posts',
+    component: PostsIndex
+}
+
+export const NewRequestInstance = {
+    el: '.new-request',
+    component: NewRequest
 }

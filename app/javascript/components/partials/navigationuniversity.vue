@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+        <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" >
             <div v-for="navbar_link in navbar_links" :key="navbar_link.text">
                 <li class="nav-item" :class="active_link(navbar_link)" v-if="navbar_link.children_links == 0">
                     <a class="nav-link" :href="navbar_link.path">{{navbar_link.text}}</a>
@@ -60,12 +60,12 @@ export default {
                     children_links: []
                 },
                 {
-                    text: "Request",
+                    text: "Demandes",
                     path: "/universities/requests",
                     children_links: []
                 },
                 {
-                    text: "Students",
+                    text: "Etudiants",
                     path: "/universities/students",
                     children_links: []
                 },

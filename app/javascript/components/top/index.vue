@@ -11,11 +11,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col col-sm-12 col-lg-6">
+                        <div class="row text-center">
+                            <div class="col col-sm-12 col-lg-6 my-sm-2">
                                 <a href="/universities/sign_in" class="btn btn-primary">Université ou Admin</a>    
                             </div>
-                            <div class="col col-sm-12 col-lg-6">
+                            <div class="col col-sm-12 col-lg-6 my-sm-2">
                                 <a href="/students/sign_in" class="btn btn-primary">Etudiant</a>
                             </div>
                         </div>
@@ -34,11 +34,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col col-sm-12 col-lg-6">
+                        <div class="row text-center">
+                            <div class="col col-sm-12 col-lg-6 my-sm-2">
                                 <a href="/universities/sign_up" class="btn btn-primary">Université ou Admin</a>    
                             </div>
-                            <div class="col col-sm-12 col-lg-6">
+                            <div class="col col-sm-12 col-lg-6 my-sm-2">
                                 <a href="/students/sign_up" class="btn btn-primary">Etudiant</a>
                             </div>
                         </div>
@@ -57,21 +57,21 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="/images/top/1.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-block">
+                        <div class="carousel-caption d-block bg-primary ">
                             <h3>UnivMeet</h3>
                             <p>Université ou Administrateur, vous pouvez contôler qui a le droit de seconnecter ou pas à ce réseau social en validant ou en invalidant les comptes après inscription.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="/images/top/2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-block">
+                        <div class="carousel-caption d-block bg-primary">
                             <h3>UnivMeet</h3>
                             <p>Etudiants, discutez et partagez vos expériences entre vous, ce réseau étant destiné qu'aux étudiants de cette patrie vous ne serez pas distrait par des comptes factices.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/top/3.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-block">
+                        <img src="/images/top/3.jpg" class="d-block" alt="...">
+                        <div class="carousel-caption d-block bg-primary">
                             <h3>UnivMeet</h3>
                             <p>Etudiant, en toute anonymat n'hésiter pas à faire des demandes ou des plaintes à votre université. Universtité, soyez à l'écoute des demandes des étudiants pour le bon fonctionnement de votre établissement.</p>
                         </div>
@@ -106,17 +106,36 @@ export default {
 </script>
 
 <style scoped>
-    .carousel-item{
-        max-height: 75vh;
+    #app{
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
+        display: flex;
     }
 
     .carousel-item img{
-        max-width: 100%;
-        min-height: 100%;
+        max-width: 100vh;
+        max-height: 70vh;
+    }
+
+    @media (min-width: 1180px) {
+        .carousel-caption{
+            max-width: 70vh;
+            display: flex !important;
+            flex-direction: column;
+            position: static;
+            align-content: center;
+            justify-content: center;
+        }
     }
 
     .carousel-caption p{
-        font-size: 15px;
-        font-weight: 600;
+        font-size: 10px;
+        font-weight: 300;
+    }
+
+    .carousel-item.active, .carousel-item-next, .carousel-item-prev {
+        display: flex;
+        justify-content: center;
     }
 </style>

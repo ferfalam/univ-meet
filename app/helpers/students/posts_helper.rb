@@ -1,0 +1,2 @@
+module Students::PostsHelper
+end

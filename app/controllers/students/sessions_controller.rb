@@ -9,9 +9,18 @@ class Students::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @student = Student.find_by(email: params[:session][:email])
+    if @student.present?
+      if @student.valid_password?(params[:session][:password])
+        sign_in @student
+        render json: {
+          status: 200,
+          url: '/'
+        }
+      end
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy

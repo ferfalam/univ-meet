@@ -15,6 +15,16 @@ class LandingController < ApplicationController
     end
   end
 
+  def indexstudent
+    @data = {
+      posts: Post.order(created_at: :desc),
+      students: Student.all,
+      favorites: Favorite.all,
+      universities: University.all,
+      fields: Field.all
+    }
+  end
+
 
   private
   def valid_account

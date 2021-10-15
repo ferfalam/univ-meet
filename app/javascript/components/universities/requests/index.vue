@@ -2,6 +2,7 @@
     <div id="app">
         <NavigationUniversity :user="user" />
         <div class="container my-3">
+            <h1>Les demandes</h1>
             <div class="toast toast-danger text-light" :class="toast.color">
                 <div class="toast-header">
                     {{toast.header}}

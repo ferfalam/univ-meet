@@ -9,12 +9,13 @@
 ## Employment term technology
 ***
 - devise for students and univerties
-- message function to implement chat between students
+- Comment function to implement comment for post
 - favorite function to add post to favorite
 
 ## Technology outside the curriculum
 ***
-- Vue Router
+- Vue turbolinks
+- Vue cloudinary
 
 
 ## Execution procedure
@@ -22,6 +23,7 @@
 > $ git clone https://github.com/ferfalam/univ-meet  
 > $ cd univ-meet  
 > $ bundle install  
+> $ npm install  
 > $ rails db:create  
 > $ rails db:migrate  
 > $ rails db:seed  

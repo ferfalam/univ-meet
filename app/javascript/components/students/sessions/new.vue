@@ -11,23 +11,25 @@
                             <h2 class="my-1">Connection Etudiant</h2>
 
                             <form action="/students/sign_in" method="post">
+                                <div class="alert alert-danger p-2" v-if="error"> {{error}} </div>
+
                                 <div class="form-group">
-                                    <input type="email" name="" id="email" placeholder="Email" class= "form-control" />
+                                    <input type="email" v-model="login_data.email" id="email" placeholder="Email" class= "form-control" />
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" name="" id="password" placeholder="Mot de passe" class= "form-control" />
+                                    <input type="password" v-model="login_data.password" id="password" placeholder="Mot de passe" class= "form-control" />
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="checkbox" name="" id="remember_me" class="form-check-input" />
+                                    <input type="checkbox" v-model="login_data.remenber_me" id="remember_me" class="form-check-input" />
                                     <label class="form-check-label" for="remember_me">
                                         Se souvenir de moi
                                     </label>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="submit" value="Se connecter" class="btn btn-lg btn-primary rounded-sm"/>
+                                    <input type="submit" v-on:click="login" value="Se connecter" class="btn btn-lg btn-primary rounded-sm"/>
                                 </div>
 
                                 <div class="row d-flex justify-content-around">
@@ -35,6 +37,8 @@
                                     <a class="btn btn-outline-secondary border-0" href="/students/sign_up"> Vous avez pas un compte ?</a>
                                 </div>
                             </form>
+
+                            <a :href="goto" id="goto" class="d-none"></a>
                         </div>
                     </div>
                 </div>
@@ -44,9 +48,40 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
-    name: 'StudentLogIn'
+    name: 'StudentLogIn',
 
+    mounted() {
+        axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+    data: () => {
+        return {
+            goto: "",
+            error: null,
+            login_data : {
+                email: null,
+                password: null,
+                remenber_me: false
+            }
+        }
+    },
+    methods: {
+        login: function(e) {
+            let _this = this
+            e.preventDefault();
+            axios.post('/students/sign_in', this.login_data)
+            .then(function (res) {
+                if (res.data.url) {
+                    // console.log(res.data)
+                    _this.goto = res.data.url
+                    document.getElementById("goto").click()
+                } else {
+                    _this.error = 'Information de connexion Incorrect'
+                }
+            })
+        }
+    },
 }
 </script>
 

@@ -37,6 +37,7 @@
                                     <a class="btn btn-outline-secondary border-0" href="/universities/sign_up"> Vous avez pas un compte ?</a>
                                 </div>
                             </form>
+                            <a :href="goto" id="goto" class="d-none"></a>
                         </div>
                     </div>
                 </div>
@@ -54,6 +55,7 @@ export default {
     },
     data: () => {
         return {
+            goto: "",
             error: null,
             login_data : {
                 email: null,
@@ -70,7 +72,8 @@ export default {
             .then(function (res) {
                 if (res.data.url) {
                     // console.log(res.data)
-                    window.location =  res.data.url
+                    _this.goto = res.data.url
+                    document.getElementById("goto").click()
                 } else {
                     _this.error = 'Information de connexion Incorrect'
                 }
