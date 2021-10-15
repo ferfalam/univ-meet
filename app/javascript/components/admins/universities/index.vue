@@ -105,7 +105,7 @@ export default {
 }
 </script>
 
-<style>
+ <style scoped>
 .toast{
     position: fixed;
     right: 5px;

@@ -67,7 +67,7 @@ export default {
 }
 </script>
 
-<style>
+ <style scoped>
 #app{
   margin-top: 100px !important
 }
