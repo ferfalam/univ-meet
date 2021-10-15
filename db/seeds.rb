@@ -79,9 +79,9 @@ end
 100.times do
     Post.create(
         {
-            image: Faker::Avatar.image, 
-            content: Faker::Lorem.paragraph(5),
-            student_id: Random.rand(1..50)
+            image: Faker::Avatar.image || null , 
+            content: Faker::Lorem.paragraph(10),
+            student_id: Random.rand(2..49)
         }
     )
 end
@@ -90,8 +90,8 @@ end
 70.times do
    Favorite.create(
        {
-           post_id: rand(1..100),
-           student_id: rand(1..50)
+           post_id: rand(2..99),
+           student_id: rand(2..49)
        }
    ) 
 end
@@ -101,8 +101,8 @@ end
     Conversation.create(
         {
             statut: ['personal', 'group'].sample,
-            receiver_id: rand(1..20),
-            student_id: rand(1..50)
+            receiver_id: rand(2..20),
+            student_id: rand(2..50)
         }
     )
 end
@@ -114,6 +114,17 @@ end
             content: Faker::Lorem.paragraph(5),
             conversation_id: rand(1..25),
             student_id: rand(1..50)
+        }
+    )
+end
+
+## Comments seed
+150.times do
+    Comment.create(
+        {
+            context: Faker::Lorem.paragraph(7),
+            post_id: rand(2..99),
+            student_id: rand(2..40)
         }
     )
 end
