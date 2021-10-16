@@ -43,7 +43,7 @@
 
 ## ER Diagram
 ***
-![ER DIAGRAM](/er-diagram.jpg "ER Diagram")
+![ER DIAGRAM](/er-diagram.png "ER Diagram")
 
 ## Screen Transition Diagram
 ***
