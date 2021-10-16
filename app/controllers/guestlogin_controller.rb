@@ -1,6 +1,6 @@
 class GuestloginController < ApplicationController
     def adminlogin
-        @university = University.find_by email: 'admin@univmeet.com'
+        @university = University.where(valid_account: true, admin: true).limit(1)[0]
         if @university.present?
             if @university.valid_password?("password")
                 sign_in @university
@@ -10,7 +10,7 @@ class GuestloginController < ApplicationController
     end
     
     def universitylogin
-        @university = University.find_by(email: "joi@fisher-powlowski.com")
+        @university = University.where(valid_account: true, admin: false).limit(1)[0]
         if @university.present?
             if @university.valid_password?("password")
                 sign_in @university
@@ -20,7 +20,7 @@ class GuestloginController < ApplicationController
     end
     
     def studentlogin
-        @student = Student.find_by(email: "emilio@koelpin.net")
+        @student = Student.where(valid_account: true).limit(1)[0]
         if @student.present?
             if @student.valid_password?("password")
                 sign_in @student
