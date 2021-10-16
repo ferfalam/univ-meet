@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root to: 'top#index'
+
+
+  get "/guest/admin", to: "guestlogin#adminlogin"
+  get "/guest/university", to: "guestlogin#universitylogin"
+  get "/guest/student", to: "guestlogin#studentlogin"
   
   namespace :admins do
     resources :universities, only: [:index, :destroy]

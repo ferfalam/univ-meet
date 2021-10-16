@@ -16,7 +16,7 @@ class Students::SessionsController < Devise::SessionsController
         sign_in @student
         render json: {
           status: 200,
-          url: '/'
+          url: '/students/landing'
         }
       end
     end

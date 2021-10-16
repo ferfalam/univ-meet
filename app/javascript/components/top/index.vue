@@ -48,6 +48,18 @@
         </div>
 
         <div class="container my-3">
+            <div class="row">
+                <div class="text-center w-100"><h3>Bienvenue sur UnivMeet</h3></div>
+                
+                <p class="text-justify">
+                    UnivMeet est un réseau social destiné au étudiant du Bénin. 
+                    Les étudiants peuvent communiquer entre eux,  <b>faire des postes, commenter des postes et mettre des postes en favoris.</b> <br>
+                    Les étudiants peuvent aussi  <b>faire des demandes, des recommandations ou des plaintes à leur université en tout anonymat.</b> <br>
+                    Les universités sont appelés  <b>à vérifier et valider ou non le compte d'un étudiant avant qu'il n'est un accès complet à la plateforme.</b> <br>
+                    Les universités pourront  <b>voir les demandes des étudiants.</b> <br>
+                    Le compte des universités est vérifié et validé par l'administrateur avant leur accès complet à la plateforme.
+                </p>
+            </div>
             <div id="carouselExampleCaptions" class="carousel slide vh-50" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>

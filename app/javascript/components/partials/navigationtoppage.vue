@@ -21,6 +21,9 @@
             </div>
         </ul>
         <form class="d-flex">
+            <a href="/guest/admin" class="btn btn-outline-primary mx-2">Admin Invité</a>
+            <a href="/guest/university" class="btn btn-outline-primary mx-2">Université Invité</a>
+            <a href="/guest/student" class="btn btn-outline-primary mx-2">Etudiant Invité</a>
             <button type="button" class="btn btn-outline-primary mx-2" data-toggle="modal" data-target="#loginmodal">
                 Se connecter
             </button>
