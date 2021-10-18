@@ -11,7 +11,7 @@
                     {{toast.body}}
                 </div>
             </div>
-            <RequestCard v-for="(request, index) in requests" :key="request.id" :request="request" v-on:delete_request="deleterequest(index, $event)"/>
+            <RequestCard v-for="(request, index) in requests_init" :key="request.id" :request="request" v-on:approve="approve(index, $event)" v-on:rejet="rejet(index, $event)" v-on:delete_request="deleterequest(index, $event)"/>
         </div>
         <Footer />
     </div>
@@ -33,13 +33,41 @@ export default {
     },
 
     methods:{
+        approve: function (index, request) {
+            let _this=this
+            axios.post('/universities/requests/approve/'+request.id)
+            .then(function (response) {
+                if (response.data.status == 200) {
+                    _this.requests_init = response.data.requests
+                    _this.toast = response.data.toast 
+                    $('.toast').toast('show');
+                }else{
+                    _this.toast = response.data.toast 
+                    $('.toast').toast('show');
+                }
+            })
+        },
+        rejet: function (index, request) {
+            let _this=this
+            axios.post('/universities/requests/rejet/'+request.id)
+            .then(function (response) {
+                if (response.data.status == 200) {
+                    _this.requests_init = response.data.requests
+                    _this.toast = response.data.toast 
+                    $('.toast').toast('show');
+                }else{
+                    _this.toast = response.data.toast 
+                    $('.toast').toast('show');
+                }
+            })
+        },
         deleterequest: function (index, request) {
             let _this=this
-            axios.delete('/universities/requests/'+request.id, this.request_data)
+            axios.delete('/universities/requests/'+request.id)
             .then(function (response) {
                 if (response.data.status == 200) {
                     if (index > -1) {
-                        _this.requests.splice(index, 1)
+                        _this.requests_init.splice(index, 1)
                     }
                     _this.toast = response.data.toast 
                     $('.toast').toast('show');
@@ -59,6 +87,7 @@ export default {
 
     data() {
         return {
+            requests_init: this.requests,
             errors: {
                 title: null,
                 acronym: null,

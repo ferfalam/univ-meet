@@ -65,7 +65,7 @@ export default {
                 },
                 {
                     text: "Faire une demande",
-                    path: "/students/requests/new",
+                    path: "/students/requests/",
                     children_links: []
                 },
                 {

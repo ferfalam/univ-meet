@@ -14,6 +14,7 @@ class Student < ApplicationRecord
   has_many :posts, dependent: :nullify
   has_many :messages, dependent: :nullify
   has_many :conversations, dependent: :nullify
+  has_many :requests, dependent: :nullify
   has_many :favorites, dependent: :destroy
   has_many :group_students_maps, dependent: :destroy
   has_many :comments, dependent: :destroy

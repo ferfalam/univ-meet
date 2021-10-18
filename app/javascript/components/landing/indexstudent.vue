@@ -306,6 +306,14 @@
 </script>
 
 <style scoped>
+
+.toast{
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    z-index: 1;
+}
+
 .text-post-content{
     border: none;
     border-bottom: solid 1px;

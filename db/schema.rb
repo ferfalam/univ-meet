@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_074252) do
+ActiveRecord::Schema.define(version: 2021_10_18_171314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,9 +90,13 @@ ActiveRecord::Schema.define(version: 2021_10_15_074252) do
   create_table "requests", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
+    t.boolean "approve", default: false
+    t.boolean "rejet", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "university_id"
+    t.bigint "student_id"
+    t.index ["student_id"], name: "index_requests_on_student_id"
     t.index ["university_id"], name: "index_requests_on_university_id"
   end
 
@@ -143,6 +147,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_074252) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "students"
   add_foreign_key "posts", "students"
+  add_foreign_key "requests", "students"
   add_foreign_key "requests", "universities"
   add_foreign_key "students", "fields"
   add_foreign_key "students", "universities"

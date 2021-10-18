@@ -38,16 +38,6 @@ end
     )
 end
 
-##requests seed
-20.times do
-    Request.create(
-        {
-            title: Faker::Lorem.sentence(2),
-            description: Faker::Lorem.paragraph(5),
-            university_id: Random.rand(2..15)
-        }
-    )
-end
 
 ## Student seed && Group Student Map
 50.times{
@@ -125,6 +115,20 @@ end
             context: Faker::Lorem.paragraph(7),
             post_id: rand(2..99),
             student_id: rand(2..40)
+        }
+    )
+end
+
+##requests seed
+60.times do
+    Request.create(
+        {
+            title: Faker::Lorem.sentence(2),
+            description: Faker::Lorem.paragraph(5),
+            university_id: Random.rand(2..15),
+            student_id: Random.rand(2..15),
+            approve: Faker::Boolean.boolean,
+            rejet: Faker::Boolean.boolean
         }
     )
 end

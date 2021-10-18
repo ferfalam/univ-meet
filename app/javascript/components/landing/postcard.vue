@@ -1,5 +1,13 @@
 <template>
     <div>
+        <div class="toast toast-danger text-light" :class="toast.color">
+            <div class="toast-header">
+                {{toast.header}}
+            </div>
+            <div class="toast-body">
+                {{toast.body}}
+            </div>
+        </div>
         <div class="card my-2">
             <div class="card-header">
                 <div class="h3"> {{owner.lastname}} {{owner.firstname}} </div>
@@ -55,7 +63,12 @@ export default {
             },
             sub:false,
             commentaire: null,
-            url: '/students/posts/'+this.elmt.post.id
+            url: '/students/posts/'+this.elmt.post.id,
+            toast: {
+                header: '',
+                body: '',
+                color: ''
+            }
         }
     },
 
@@ -109,5 +122,12 @@ export default {
 </script>
 
  <style scoped>
+
+.toast{
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    z-index: 1;
+}
 
 </style>
