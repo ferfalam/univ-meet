@@ -68,7 +68,8 @@ export default {
                                 description: null,
                             }
                     _this.toast = response.data.toast
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                     _this.requests_init = response.data.requests
                     _this.request_data = {
                                 title: '',
@@ -88,10 +89,12 @@ export default {
                         _this.requests.splice(index, 1)
                     }
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         }

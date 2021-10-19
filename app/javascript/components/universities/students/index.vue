@@ -45,12 +45,14 @@ export default {
             .then(function (response) {
                 if (response.data.status == 200) {
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                     _this.init_students_data = response.data.students
                     _this.students_data = response.data.students
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         },
@@ -65,11 +67,13 @@ export default {
                         _this.students_data.splice(index, 1)
                     }
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                     axios.post("/universities/students/destroymail", req.reason)
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         },

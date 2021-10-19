@@ -16,6 +16,14 @@
                 <CommentCard v-for="(comment, index) in comments_data" :key="comment.comment.id" :comment="comment" v-on:delete_comment="deletecomment(index, $event)" :user="user" />
             </div>
         </div>
+        <div class="toast toast-danger text-light" :class="toast.color">
+                <div class="toast-header">
+                    {{toast.header}}
+                </div>
+                <div class="toast-body">
+                    {{toast.body}}
+                </div>
+            </div>
     </div>
 </template>
 
@@ -48,7 +56,12 @@ export default {
             comments_init: this.comments,
             commentaire: null,
             comments_data: [],
-            toast: null
+            
+            toast: {
+                header: '',
+                body: '',
+                color: ''
+            }
         }
     },
 
@@ -64,10 +77,12 @@ export default {
                     _this.comments_data = []
                     _this.getcomments()
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         },
@@ -97,7 +112,8 @@ export default {
                     }
                     _this.toast = response.data.toast
                     _this.comments_init.push(response.data.comment)
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                     _this.comments_data = []
                     _this.getcomments()
                     _this.commentaire = null
@@ -112,6 +128,13 @@ export default {
 </script>
 
  <style scoped>
+ .toast{
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    z-index: 1;
+}
+
     .content-page{
         margin-top: 100px !important
     }

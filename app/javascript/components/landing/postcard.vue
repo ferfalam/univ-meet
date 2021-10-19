@@ -82,7 +82,8 @@ export default {
                         content: null
                     }
                     _this.toast = response.data.toast
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                     _this.commentaire = null
                 }else{
                     _this.errors = response.data.errors

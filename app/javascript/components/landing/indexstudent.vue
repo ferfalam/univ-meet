@@ -157,7 +157,8 @@
                 _this.toast = response.data.toast
                 _this.data_infos.posts = response.data.post
                 _this.setPostsElmtProps()
-                $('.toast').toast('show');
+                $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 _this.new_post = {
                   content: '',
                   image: '',

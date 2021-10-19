@@ -40,10 +40,12 @@ export default {
                 if (response.data.status == 200) {
                     _this.requests_init = response.data.requests
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         },
@@ -54,10 +56,12 @@ export default {
                 if (response.data.status == 200) {
                     _this.requests_init = response.data.requests
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         },
@@ -70,10 +74,12 @@ export default {
                         _this.requests_init.splice(index, 1)
                     }
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         }

@@ -79,7 +79,8 @@ export default {
                             }
                     _this.toast = response.data.toast
                     _this.fields.push(response.data.field)
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                     _this.field_data = {
                                 name: '',
                                 acronym: '',
@@ -98,10 +99,12 @@ export default {
                         _this.fields.splice(index, 1)
                     }
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         }

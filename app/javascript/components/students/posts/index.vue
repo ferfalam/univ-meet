@@ -45,10 +45,12 @@ export default {
                         _this.posts_data.splice(index, 1)
                     }
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }else{
                     _this.toast = response.data.toast 
-                    $('.toast').toast('show');
+                    $('.toast').toast({delay: 3000});
+    $('.toast').toast('show');
                 }
             })
         }
@@ -68,6 +70,13 @@ export default {
 </script>
 
  <style scoped>
+ .toast{
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    z-index: 1;
+}
+
 #app{
   margin-top: 100px !important
 }
