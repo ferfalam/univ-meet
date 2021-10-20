@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Request, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is invalid without title" do
+    request = Request.create({
+      description: "Some content"
+    })
+    expect(request.errors[:title]).to  include("Titre ne peut pas être vide")
+  end
+  
 end
