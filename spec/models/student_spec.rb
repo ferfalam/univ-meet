@@ -69,4 +69,33 @@ RSpec.describe Student, type: :model do
 
     expect(student.errors[:card_image]).to include("Insérer votre carte d'étudiant")
   end
+
+  it "is invalid without password" do
+    student = Student.create(
+      firstname: 'john',
+      lastname: "doe",
+      phone_number: "11111111",
+      personal_number: '22222222',
+      email: 'johndoe@gmail.com',
+      university_id: 1,
+      field_id: 1
+    )
+
+    expect(student.errors[:password]).to include("Mot de passe ne peut pas être vide")
+  end
+
+  it "is valid all required" do
+    student = Student.create(
+      firstname: 'john',
+      lastname: "doe",
+      phone_number: "11111111",
+      personal_number: '22222222',
+      email: 'johndoe@gmail.com',
+      card_image: "image",
+      university_id: 1,
+      field_id: 1
+    )
+
+    expect(student.phone_number).to include("11111111")
+  end
 end
