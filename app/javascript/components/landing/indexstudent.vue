@@ -110,11 +110,13 @@
             {{toast.body}}
         </div>
       </div>
+      <Footer />
   </div>
 </template>
 <script>
   import axios from 'axios'
   import NavigationStudent from '../partials/navigationstudent.vue'
+  import Footer from '../partials/footer.vue'
   import FriendElmt from './friendelmt.vue'
   import FavoriteElmt from './favoriteselmt.vue'
   import PostElmt from './postcard.vue'
@@ -138,6 +140,7 @@
 
     components: {
       NavigationStudent,
+      Footer,
       FriendElmt,
       FavoriteElmt,
       PostElmt
@@ -374,8 +377,4 @@
   box-shadow: 0px 0px 11px 2px #a7a7a7;
 }
 
-footer{
-  position: absolute;
-  bottom: 0
-}
 </style>
