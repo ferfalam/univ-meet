@@ -10,7 +10,7 @@
                 </div>
                 <div v-else>
                     <div class="form-group">
-                        <textarea v-model="post_data.content" class="form-control content-post" ></textarea>
+                        <textarea v-model="post_data.content" placeholder="Modifier votre post" class="form-control content-post" ></textarea>
                     </div>
                     <div class="form-group">
                         <input type="file" v-on:change="onFileChange" class="form-control-file card-image-input" id="card_image"/>

@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    <button v-on:click="createrequest" class="btn btn-info">Faire une demande</button>
+                    <button v-on:click="createrequest" class="btn btn-info">Faire la demande</button>
                 </div>
             </div>
 

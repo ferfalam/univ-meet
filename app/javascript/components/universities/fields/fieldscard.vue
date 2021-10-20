@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col col-sm-12 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" v-model="field_data.name" placeholder="Nom complet de la filière">
+                                    <input type="text" class="form-control" v-model="field_data.name" placeholder="Modifier nom complet de la filière">
                                     <ul v-if="errors.name" class="text-danger">
                                             <li v-for="error in errors.name" :key="error">
                                                 <small>{{error}}</small>
@@ -23,7 +23,7 @@
                             </div>
                             <div class="col col-sm-12 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" v-model="field_data.acronym" placeholder="Dimunitif de la filière">
+                                    <input type="text" class="form-control" v-model="field_data.acronym" placeholder="Modifier diminutif de la filière">
                                     <ul v-if="errors.acronym" class="text-danger">
                                             <li v-for="error in errors.acronym" :key="error">
                                                 <small>{{error}}</small>

@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col col-sm-12 col-lg-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" v-model="field_data.acronym" placeholder="Dimunitif de la filière">
+                                        <input type="text" class="form-control" v-model="field_data.acronym" placeholder="Diminutif de la filière">
                                         <ul v-if="errors.acronym" class="text-danger">
                                             <li v-for="error in errors.acronym" :key="error">
                                                 <small>{{error}}</small>

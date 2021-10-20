@@ -1,5 +1,6 @@
 class LandingController < ApplicationController
   before_action :authenticate_university!, only: [:indexuniversity]
+  before_action :authenticate_student!, only: [:indexstudent]
   before_action :valid_account
   def indexuniversity
     if current_university.admin

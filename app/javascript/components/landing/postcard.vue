@@ -29,7 +29,7 @@
                             <button v-on:click="favorite_m" class="btn" v-if="!favorite"> <img src="/images/like/1.png" alt=""> </button> 
                         </div>
                         <div class="col col-9">
-                            <textarea v-model="commentaire" class="form-control"></textarea>
+                            <textarea v-model="commentaire" placeholder="Commentaire" class="form-control"></textarea>
                             <button v-on:click="comment" class="btn btn-success my-2">Commenter</button> 
                         </div>
                     </div>

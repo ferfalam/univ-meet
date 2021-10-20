@@ -332,7 +332,7 @@
 @media (min-width: 1100px) {
   .friend-content{
     overflow-y: scroll;
-    max-height: 100vh;
+    max-height: 75vh;
     position: fixed;
   }
 }
@@ -352,7 +352,7 @@
   .favorite-content{
     position: fixed;
     right: 0;
-    max-height: 100vh;
+    max-height: 75vh;
     overflow-y: scroll;
     direction: rtl;
   }

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     post "/posts/favorite/:id", to: "posts#favorite"
     post "/posts/unfavorite/:id", to: "posts#unfavorite"
     resources :messages, only: [:index]
-    resources :requests, only: [:index, :create, :delete]
+    resources :requests, only: [:index, :create, :destroy]
     resources :posts, only: [:index, :show, :create, :update, :destroy]
     resources :comments, only: [:create, :destroy]
   end
