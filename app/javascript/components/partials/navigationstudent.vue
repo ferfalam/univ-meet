@@ -49,7 +49,7 @@ export default {
         return {
             navbar_links: [
                 {
-                    text: "Accueil",
+                    text: "Acceuil",
                     path: "/students/landing",
                     children_links: []
                 },
