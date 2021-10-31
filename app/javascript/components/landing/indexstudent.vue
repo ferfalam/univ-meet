@@ -62,7 +62,7 @@
               </g>
               </svg>
             </div>
-            <div class="col col-9">
+            <div class=" col-9">
               <input type="text" v-on:input="search_student" class="form-control search-input">
             </div>
           </div>
@@ -71,8 +71,8 @@
           </div>
         </div>
         
-        <div class="col col-sm-12 col-lg-6 post-content">
-          <div id="new-post">
+        <div class=" col-sm-12 col-lg-6 post-content">
+          <div id="new-post" class="new-post-area">
             <div class="row align-items-center text-center">
               <div class="col col-9">
                 <textarea type="text" v-model="new_post.content" class="form-control text-post-content" placeholder="Publier un post"></textarea>
@@ -95,9 +95,13 @@
           </div>
           
           <PostElmt v-for="post in postselmtprops" :key="post.post.id" :elmt="post" :user="user" />
+          <div style="text-align: -webkit-center;" v-if="loader">
+            <div class="loader"></div>
+          </div>
+            
         </div>
 
-        <div class="col col-sm-12 col-lg-3 favorite-content">
+        <div class=" col-sm-12 col-lg-3 favorite-content">
           <p class="h3">Mes favoris</p>
           <FavoriteElmt v-for="favorite in favoriteselmtprops" :favorite="favorite" :key="favorite.id" :user="user" />
         </div>
@@ -122,10 +126,6 @@
   import PostElmt from './postcard.vue'
   export default {
     name: "IndexStudent",
-
-    mounted() {
-      axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    },
     
     props: {
       landing_data: Object,
@@ -133,9 +133,11 @@
     },
 
     mounted() {
+      axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       this.setFriendsElmtProps()
       this.setFavoritesElmtProps()
-      this.setPostsElmtProps()
+      this.setPostsElmtProps(0)
+      this.getNextPosts()
     },
 
     components: {
@@ -144,6 +146,26 @@
       FriendElmt,
       FavoriteElmt,
       PostElmt
+    },
+
+    data: function () {
+      return {
+        loader: false,
+        data_infos:this.landing_data,
+        new_post:{
+          content: null,
+          image: null,
+        },
+        friendselmtprops: [],
+        favoriteselmtprops: [],
+        postselmtprops: [],
+        file_error: null,
+        toast: {
+          header: '',
+          body: '',
+          color: ''
+        }
+      }
     },
 
     methods:{
@@ -161,7 +183,7 @@
                 _this.data_infos.posts = response.data.post
                 _this.setPostsElmtProps()
                 $('.toast').toast({delay: 3000});
-    $('.toast').toast('show');
+                $('.toast').toast('show');
                 _this.new_post = {
                   content: '',
                   image: '',
@@ -177,15 +199,23 @@
         document.getElementById("post_image").click()
       },
 
-      setPostsElmtProps: function () {
+      setPostsElmtProps: function (from) {
         // console.log(this.favoriteselmtprops)
-        this.postselmtprops = []
-        this.data_infos.posts.forEach(post => {
+        this.postselmtprops = this.postselmtprops.length == 0 ? [] : this.postselmtprops
+        const to = from+5 < this.data_infos.posts.length ? from+5 : this.data_infos.posts.length 
+        for (let i = from; i < to; i++) {
+          const post = this.data_infos.posts[i];
           let temp = {
             post: post,
             favorite: false,
+            comment: 0,
             owner: null
           }
+          this.data_infos.comments.forEach((comment) => {
+            if (post.id == comment.post_id) {
+              temp.comment += 1
+            }
+          })
           this.data_infos.students.forEach((student) => {
             if (post.student_id == student.id) {
               temp.owner = student
@@ -197,7 +227,7 @@
             }
           });
           this.postselmtprops.push(temp)
-        });
+        }
       },
 
       setFriendsElmtProps: function () {
@@ -219,12 +249,12 @@
           this.data_infos.students.forEach((student) => {
             let fullname = student.lastname+" "+student.firstname
             if (student.id != this.user.id && fullname.toLowerCase().includes(e.target.value.toLowerCase())) {
-              let friends_elmt = {
+              let friend_elmt = {
                 friend: student,
                 university: this.data_infos.universities.filter((university) => (university.id == student.university_id))[0],
                 post: this.data_infos.posts.filter((post) => (post.id == student.post_id))[0]
               }
-              this.friendselmtprops.push(friends_elmt)
+              this.friendselmtprops.push(friend_elmt)
             }
           })
         }else{
@@ -286,23 +316,17 @@
         };
         reader.readAsDataURL(file);
       },
-    },
-
-    data: function () {
-      return {
-        data_infos:this.landing_data,
-        new_post:{
-          content: null,
-          image: null,
-        },
-        friendselmtprops: [],
-        favoriteselmtprops: [],
-        postselmtprops: [],
-        file_error: null,
-        toast: {
-          header: '',
-          body: '',
-          color: ''
+      getNextPosts() {
+        let _this = this
+        window.onscroll = () => {
+          let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+          if (bottomOfWindow) {
+            _this.loader = true
+            setTimeout(() => {
+              _this.loader = false
+            }, 700);
+            this.setPostsElmtProps(this.postselmtprops.length - 1)  
+          }
         }
       }
     }
@@ -310,6 +334,26 @@
 </script>
 
 <style scoped>
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #5fc563;
+  width: 70px;
+  height: 70px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .toast{
     position: fixed;
@@ -318,10 +362,10 @@
     z-index: 1;
 }
 
-.text-post-content{
-    border: none;
-    border-bottom: solid 1px;
-    border-radius: 0;
+.new-post-area{
+    box-shadow: 0px 0px 3px 4px #d2d2d2;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .content-all{
@@ -367,10 +411,14 @@
   }
 }
 
+.friend-content{
+  margin: 10px 0;
+}
+
 .friend-card, .favorite-card{
-    border-radius: 10px;
-    background-color: #f3f3f3;
-    padding: 10px;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+  padding: 10px;
 }
 
 .friend-card:hover, .favorite-card:hover{

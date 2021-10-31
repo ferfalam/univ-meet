@@ -48,7 +48,7 @@
         </div>
 
         <div class="container my-3">
-            <div class="row">
+            <div class="row pre-text">
                 <div class="text-center w-100"><h3>Bienvenue sur UnivMeet</h3></div>
                 
                 <p class="text-justify">
@@ -118,6 +118,9 @@ export default {
 </script>
 
 <style scoped>
+    .pre-text{
+        padding: 0 15px
+    }
     #app{
         min-height: 100vh;
         flex-direction: column;
@@ -128,6 +131,13 @@ export default {
     .carousel-item img{
         max-width: 100vh;
         max-height: 70vh;
+    }
+
+    @media (max-width: 1) {
+        form{
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     @media (min-width: 1180px) {

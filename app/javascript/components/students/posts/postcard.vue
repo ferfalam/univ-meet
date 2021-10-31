@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="card my-2">
+        <div class="card my-4">
             <div class="card-body">
                 <div class="card-text" v-if="!wantModify">
                     {{post_data_init.content}}
-                    <div class="d-flex justify-content-center my-2" v-if="post.image">
+                    <div class="d-flex justify-content-center my-2 w-100 " v-if="post.image">
                         <img :src="post_data_init.image" v-if="post_data_init.image" alt="Image Post">
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="card-footer text-muted">
-                <p style="float: left" class="text-muted">Crée le {{post.created_at}} </p>
+                <p style="float: left" class="text-muted">Crée le {{formartDate(post.created_at)}} </p>
                 <div style="float: right">
                     <button v-on:click="modifypost" class="btn btn-warning">Modifier</button> 
                     <button v-on:click="$emit('delete_post', post)" class="btn btn-danger">Supprimer</button> 
@@ -60,6 +60,21 @@ export default {
     },
 
     methods:{
+
+        formartDate: function (date) {
+            const month = ["Janvier", "Février", "Mars", "Avril", 
+                "Mai", "Juin", "Juillet", "Août", 
+                "Septembre", "Octobre", "Novembre",
+                "Septembre", "Octobre", "Novembre", "Décembre"
+            ]
+            const temp = new Date(date)
+
+            const day= temp.getDate() < 10 ? "0"+temp.getDate() : temp.getDate()  
+            const hour= temp.getHours() < 10 ? "0"+temp.getHours() : temp.getHours()  
+            const minutes= temp.getMinutes() < 10 ? "0"+temp.getMinutes() : temp.getMinutes()  
+
+            return day+" "+month[temp.getMonth()]+" "+temp.getFullYear()+" à "+hour+":"+minutes
+        },
         modifypost: function () {
             this.post_data.content = this.post_data_init.content
             this.wantModify = true  

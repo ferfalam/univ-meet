@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-student">
+    <nav class="navbar navbar-expand-lg navbar-dark  nav-student">
     <a class="navbar-brand d-flex align-items-center" href="/"><img src="/images/icon.png" alt="" class="icon pr-2"> UnivMeet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -58,6 +58,13 @@ export default {
                     path: "/students/posts",
                     children_links: []
                 },
+
+                {
+                    text: "Mes Favoris",
+                    path: "/students/favorites",
+                    children_links: []
+                },
+
                 {
                     text: "Messagerie",
                     path: "/students/messages",

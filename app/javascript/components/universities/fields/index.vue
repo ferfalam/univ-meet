@@ -3,7 +3,7 @@
         <NavigationUniversity :user="user" />
         <div class="container my-3">
             <h1>Les filières</h1>
-            <div class="card my-2">
+            <div class="card my-4">
                 <div class="card-body">
                     <h5 class="card-title">Nouvelle filière</h5>
                     <div class="card-text">

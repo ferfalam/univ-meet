@@ -64,7 +64,16 @@ class Students::PostsController < ApplicationController
         } 
     end
   end
-  
+
+  def listfavorites
+    @favorites = current_student.favorites.order(created_at: :desc)
+    @posts = []
+    
+    @favorites.each do |favorite|
+      @posts << favorite.post
+    end
+  end
+
   def favorite
     @favorite = Favorite.new({
       post_id: params[:id],

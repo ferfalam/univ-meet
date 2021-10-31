@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   
   get '/students/landing/', to: "landing#indexstudent"
   namespace :students do
+    get "/favorites", to: "posts#listfavorites"
     post "/posts/favorite/:id", to: "posts#favorite"
     post "/posts/unfavorite/:id", to: "posts#unfavorite"
     resources :messages, only: [:index]

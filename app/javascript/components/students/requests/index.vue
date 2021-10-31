@@ -2,7 +2,7 @@
     <div id="app">
         <NavigationStudent :user="user" />
         <div class="container my-3 content">
-            <div class="card my-2">
+            <div class="card my-4">
                 <div class="card-body">
                     <h5 class="card-title">Nouvelle Demande</h5>
                     <div class="card-text">

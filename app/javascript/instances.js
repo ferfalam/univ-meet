@@ -16,6 +16,7 @@ import StudentEdit from './components/students/registrations/edit.vue'
 import PasswordResetStudent from './components/students/passwords/new.vue'
 import MessageIndex from './components/students/messages/index.vue'
 import PostsIndex from './components/students/posts/index.vue'
+import ListFavorites from './components/students/favorites/index.vue'
 import ShowIndex from './components/students/posts/show.vue'
 import IndexRequest from './components/students/requests/index.vue'
 
@@ -111,6 +112,11 @@ export const PostsIndexInstance = {
 export const ShowIndexInstance = {
     el: '.vue-show',
     component: ShowIndex    
+}
+
+export const ListFavoritesInstance = {
+    el: '.vue-favorites',
+    component: ListFavorites
 }
 
 export const IndexRequestInstance = {

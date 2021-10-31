@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card my-2">
+        <div class="card my-4">
             <div class="card-body">
                 <h5 class="card-title">{{student.lastname+' '+student.firstname}}</h5>
                 <div class="card-text">

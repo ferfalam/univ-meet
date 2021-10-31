@@ -19,6 +19,7 @@ class LandingController < ApplicationController
   def indexstudent
     @data = {
       posts: Post.order(created_at: :desc),
+      comments: Comment.all,
       students: Student.all,
       favorites: Favorite.all,
       universities: University.all,

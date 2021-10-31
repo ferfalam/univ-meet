@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
     <a class="navbar-brand d-flex align-items-center" href="/"><img src="/images/icon.png" alt="" class="icon pr-2"> UnivMeet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,14 +20,14 @@
                 </li>
             </div>
         </ul>
-        <form class="d-flex">
-            <a href="/guest/admin" class="btn btn-outline-primary mx-2">Admin Invité</a>
-            <a href="/guest/university" class="btn btn-outline-primary mx-2">Université Invité</a>
-            <a href="/guest/student" class="btn btn-outline-primary mx-2">Etudiant Invité</a>
-            <button type="button" class="btn btn-outline-primary mx-2" data-toggle="modal" data-target="#loginmodal">
+        <form class="">
+            <a href="/guest/admin" class="btn btn-outline-light mx-2">Admin Invité</a>
+            <a href="/guest/university" class="btn btn-outline-light mx-2">Université Invité</a>
+            <a href="/guest/student" class="btn btn-outline-light mx-2">Etudiant Invité</a>
+            <button type="button" class="btn btn-outline-light mx-2" data-toggle="modal" data-target="#loginmodal">
                 Se connecter
             </button>
-            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#registermodal">
+            <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#registermodal">
                 S'inscrire
             </button>
         </form>
@@ -58,3 +58,18 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+@media (max-width: 991px) {
+    form{
+        display: flex;
+        align-items: end;
+        flex-direction: column;        
+    }
+    form a, form button{
+        margin: 5px 5px;
+        width: 170px;
+        display: block;
+    }
+}
+</style>

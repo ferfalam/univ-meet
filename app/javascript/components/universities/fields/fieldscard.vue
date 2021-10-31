@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="card my-2">
+        <div class="card my-4">
             <div class="card-header">
                 <div class="h3">{{field_data.name}}</div>
                 <div class="text-muted">{{field_data.acronym}}</div>

@@ -1,13 +1,14 @@
 <template>
     <div>
         <NavigationStudent :user="user" />
-        <div class="container my-2 content-page">
+        <div class="container my-2 px-4 content-page">
             <div class="row post">
-                <p class="h2 text-center"> {{owner.lastname}} {{owner.firstname}} </p>
-                <div class="sep"></div>
+                <p class="h2 text-left"> {{owner.lastname}} {{owner.firstname}} </p>
+                <p class="text-muted">Crée le {{formartDate(post_data.created_at)}} </p>
+                <div class="sep my-2"></div>
                 <p> {{post_data.content}} </p>
-                <div class="text-center"><img :src="post_data.image" alt=""></div>
-                <div class="sep"></div>
+                <div class="text-center"><img :src="post_data.image" class="" alt=""></div>
+                <div class="sep my-2"></div>
                 <div class="col col-12 my-2">
                     <textarea v-model="commentaire" class="form-control"></textarea>
                     <button v-on:click="comment" class="btn btn-success my-2">Commenter</button> 
@@ -17,19 +18,21 @@
             </div>
         </div>
         <div class="toast toast-danger text-light" :class="toast.color">
-                <div class="toast-header">
-                    {{toast.header}}
-                </div>
-                <div class="toast-body">
-                    {{toast.body}}
-                </div>
+            <div class="toast-header">
+                {{toast.header}}
             </div>
+            <div class="toast-body">
+                {{toast.body}}
+            </div>
+        </div>
+        <Footer />
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import NavigationStudent from '../../partials/navigationstudent.vue'
+import Footer from '../../partials/footer.vue'
 import CommentCard from './commentcard.vue'
 export default {
     props:{
@@ -47,6 +50,7 @@ export default {
 
     components: {
         NavigationStudent,
+        Footer,
         CommentCard
     },
 
@@ -66,6 +70,22 @@ export default {
     },
 
     methods: {
+
+        formartDate: function (date) {
+            const month = ["Janvier", "Février", "Mars", "Avril", 
+                "Mai", "Juin", "Juillet", "Août", 
+                "Septembre", "Octobre", "Novembre",
+                "Septembre", "Octobre", "Novembre", "Décembre"
+            ]
+            const temp = new Date(date)
+
+            const day= temp.getDate() < 10 ? "0"+temp.getDate() : temp.getDate()  
+            const hour= temp.getHours() < 10 ? "0"+temp.getHours() : temp.getHours()  
+            const minutes= temp.getMinutes() < 10 ? "0"+temp.getMinutes() : temp.getMinutes()  
+
+            return day+" "+month[temp.getMonth()]+" "+temp.getFullYear()+" à "+hour+":"+minutes
+        },
+
         deletecomment: function (index, comment) {
             let _this=this
             axios.delete('/students/comments/'+comment.comment.id)

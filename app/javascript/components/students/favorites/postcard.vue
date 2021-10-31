@@ -10,27 +10,26 @@
         </div>
         <div class="card my-4">
             <div class="card-header">
-                <div class="h3"> {{owner.lastname}} {{owner.firstname}} </div>
-                <div class="h6"> Crée le {{formartDate(post.created_at)}}</div>
+                <div class="h3"> {{user.lastname}} {{user.firstname}} </div>
+                <div class="h6"> Crée le {{post_data.created_at}}</div>
             </div>
             <div class="card-body">
                 <div class="card-text">
                     {{getContent()}}
                     <a :href="url" v-if="sub">...Voir plus</a> 
                     <a :href="url" v-else>Voir la publication</a> 
-                    <div class="d-flex justify-content-center my-2" v-if="post.image">
-                        <img class="w-100" :src="post.image" v-if="post.image" alt="Image Post">
+                    <div class="d-flex justify-content-center my-2" v-if="post_data.image">
+                        <img :src="post_data.image" v-if="post_data.image" alt="Image Post">
                     </div>
                 </div>
             </div>
             <div class="card-footer">
                 <div class="form-group row">
-                    <div class="col col-3" v-if="user.id != owner.id">
+                    <div class="col col-3">
                         <button v-on:click="unfavorite" class="btn" v-if="favorite"> <img src="/images/like/2.png" alt=""> </button> 
                         <button v-on:click="favorite_m" class="btn" v-if="!favorite"> <img src="/images/like/1.png" alt=""> </button> 
                     </div>
                     <div class="col col-9">
-                        <p class="text-mute" style="float: right;"><a :href="url"> {{numberComment}} commentaire{{numberComment > 1 ? 's':''}} </a></p>
                         <textarea v-model="commentaire" placeholder="Commentaire" class="form-control"></textarea>
                         <button v-on:click="comment" class="btn btn-success my-2">Commenter</button> 
                     </div>
@@ -49,47 +48,25 @@ export default {
     },
     props: {
         user: Object,
-        elmt: Object
+        post: Object
     },
 
     data() {
         return {
-            favorite: this.elmt.favorite,
-            post: this.elmt.post,
-            owner: this.elmt.owner,
-            numberComment: this.elmt.comment,
-            file_error: null,
-            errors: {
-                content: null,
-                image: null,
-            },
-            sub:false,
             commentaire: null,
-            url: '/students/posts/'+this.elmt.post.id,
+            post_data: this.post,
+            url: '/students/posts/'+this.post.id,
             toast: {
                 header: '',
                 body: '',
                 color: ''
             },
-            date: null
+            favorite: true,
+            errors: null
         }
     },
 
     methods:{
-        formartDate: function (date) {
-            const month = ["Janvier", "Février", "Mars", "Avril", 
-                "Mai", "Juin", "Juillet", "Août", 
-                "Septembre", "Octobre", "Novembre",
-                "Septembre", "Octobre", "Novembre", "Décembre"
-            ]
-            const temp = new Date(date)
-
-            const day= temp.getDate() < 10 ? "0"+temp.getDate() : temp.getDate()  
-            const hour= temp.getHours() < 10 ? "0"+temp.getHours() : temp.getHours()  
-            const minutes= temp.getMinutes() < 10 ? "0"+temp.getMinutes() : temp.getMinutes()  
-
-            return day+" "+month[temp.getMonth()]+" "+temp.getFullYear()+" à "+hour+":"+minutes
-        },
         comment: function () {
             let _this=this
             axios.post('/students/comments',{context: this.commentaire, post_id: this.post.id, student_id: this.user.id})
@@ -102,7 +79,6 @@ export default {
                     $('.toast').toast({delay: 3000});
                     $('.toast').toast('show');
                     _this.commentaire = null
-                    _this.numberComment += 1
                 }else{
                     _this.errors = response.data.errors
                 }
