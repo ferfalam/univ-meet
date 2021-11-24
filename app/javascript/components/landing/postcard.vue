@@ -25,9 +25,11 @@
             </div>
             <div class="card-footer">
                 <div class="form-group row">
-                    <div class="col col-3" v-if="user.id != owner.id">
-                        <button v-on:click="unfavorite" class="btn" v-if="favorite"> <img src="/images/like/2.png" alt=""> </button> 
-                        <button v-on:click="favorite_m" class="btn" v-if="!favorite"> <img src="/images/like/1.png" alt=""> </button> 
+                    <div class="col col-3">
+                        <div v-if="user.id != owner.id">
+                            <button v-on:click="unfavorite" class="btn" v-if="favorite"> <img src="/images/like/2.png" alt=""> </button> 
+                            <button v-on:click="favorite_m" class="btn" v-if="!favorite"> <img src="/images/like/1.png" alt=""> </button> 
+                        </div>
                     </div>
                     <div class="col col-9">
                         <p class="text-mute" style="float: right;"><a :href="url"> {{numberComment}} commentaire{{numberComment > 1 ? 's':''}} </a></p>

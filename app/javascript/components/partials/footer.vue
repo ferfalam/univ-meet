@@ -16,5 +16,6 @@ export default {
 footer{
     /* position: relative;
     bottom: 0 */
+    z-index: 1;
 }
 </style>
